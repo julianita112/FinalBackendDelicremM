@@ -29,19 +29,15 @@ require('./config/associations');
 
 dotenv.config();
 
-// Configuración de CORS para permitir múltiples orígenes
 const corsOptions = {
-  origin: [
-    'http://localhost:55858', // Permitir el origen local
-    'http://localhost:58019', // Agregar este nuevo origen
-    'https://delicrem-fm7p.onrender.com' // Permitir el origen de producción
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Métodos HTTP permitidos
-  credentials: true, // Permitir el envío de cookies y encabezados de autenticación
+  origin: '*', // Permitir todos los orígenes
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true,
 };
 
-app.use(cors(corsOptions)); // Usar la configuración de CORS
-app.options('*', cors(corsOptions)); // Permitir todas las opciones
+app.use(cors(corsOptions));
+
+
 
 app.use(express.json());
 
